@@ -72,7 +72,7 @@ public final class OpenGaussComBatchBindPacket extends PostgreSQLCommandPacket {
         for (int i = 0; i < resultFormatsLength; i++) {
             resultFormats.add(PostgreSQLValueFormat.valueOf(payload.readInt2()));
         }
-        binaryStatement = PostgreSQLBinaryStatementRegistry.getInstance().getBinaryStatement(connectionId, statementId);
+        binaryStatement = PostgreSQLBinaryStatementRegistry.getInstance().get(connectionId, statementId);
         sql = null == binaryStatement ? null : binaryStatement.getSql();
         eachGroupParametersCount = payload.readInt2();
     }
